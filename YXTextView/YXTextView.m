@@ -139,4 +139,22 @@
     }
 }
 
+- (BOOL)keyboardInputShouldDelete:(UITextView *)textView {
+    BOOL shouldDelete = YES;
+
+    if ([UITextView instancesRespondToSelector:_cmd]) {
+        BOOL (*keyboardInputShouldDelete)(id, SEL, UITextView *) = (BOOL (*)(id, SEL, UITextView *))[UITextView instanceMethodForSelector:_cmd];
+
+        if (keyboardInputShouldDelete) {
+            shouldDelete = keyboardInputShouldDelete(self, _cmd, UITextView);
+        }
+    }
+
+    if (![UITextView.text length] && [[[UIDevice currentDevice] systemVersion] intValue] >= 8) {
+        [self deleteBackward];
+    }
+
+    return shouldDelete;
+}
+
 @end
