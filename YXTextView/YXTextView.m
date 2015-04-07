@@ -132,8 +132,6 @@
 }
 
 - (void)deleteBackward {
-    [super deleteBackward];
-
     if ([_deleteDelegate respondsToSelector:@selector(TextViewDidDelete)]){
         [_deleteDelegate TextViewDidDelete];
     }
@@ -146,11 +144,11 @@
         BOOL (*keyboardInputShouldDelete)(id, SEL, UITextView *) = (BOOL (*)(id, SEL, UITextView *))[UITextView instanceMethodForSelector:_cmd];
 
         if (keyboardInputShouldDelete) {
-            shouldDelete = keyboardInputShouldDelete(self, _cmd, UITextView);
+            shouldDelete = keyboardInputShouldDelete(self, _cmd, textView);
         }
     }
 
-    if (![UITextView.text length] && [[[UIDevice currentDevice] systemVersion] intValue] >= 8) {
+    if ([textView.text length] && [[[UIDevice currentDevice] systemVersion] intValue] >= 8) {
         [self deleteBackward];
     }
 
