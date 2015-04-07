@@ -132,8 +132,8 @@
 }
 
 - (void)deleteBackward {
-    if ([_deleteDelegate respondsToSelector:@selector(TextViewDidDelete)]){
-        [_deleteDelegate TextViewDidDelete];
+    if ([_deleteDelegate respondsToSelector:@selector(TextViewDidDelete:)]){
+        [_deleteDelegate TextViewDidDelete:self];
     }
 }
 

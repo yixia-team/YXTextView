@@ -2,7 +2,7 @@
 
 @protocol YXTextViewDelegate <NSObject>
 @optional
-- (void)TextViewDidDelete;
+- (void)TextViewDidDelete:(UITextView*)textView;
 @end
 
 @interface YXTextView : UITextView <UIKeyInput>
