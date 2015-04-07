@@ -131,4 +131,12 @@
 	[self setNeedsDisplay];
 }
 
+- (void)deleteBackward {
+    [super deleteBackward];
+
+    if ([_deleteDelegate respondsToSelector:@selector(TextViewDidDelete)]){
+        [_deleteDelegate TextViewDidDelete];
+    }
+}
+
 @end

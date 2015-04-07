@@ -1,6 +1,13 @@
 #import <UIKit/UIKit.h>
 
-@interface YXTextView : UITextView
+@protocol YXTextViewDelegate <NSObject>
+@optional
+- (void)TextViewDidDelete;
+@end
+
+@interface YXTextView : UITextView <UIKeyInput>
+
+@property (nonatomic, assign) id<YXTextViewDelegate> deleteDelegate;
 
 @property (nonatomic, strong) NSString *placeholder;
 
