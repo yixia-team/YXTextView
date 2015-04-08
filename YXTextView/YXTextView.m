@@ -132,8 +132,11 @@
 }
 
 - (void)deleteBackward {
-    if ([_deleteDelegate respondsToSelector:@selector(TextViewDidDelete:)]){
-        [_deleteDelegate TextViewDidDelete:self];
+    if([[[UIDevice currentDevice] systemVersion] intValue] < 8) {
+        [super deleteBackward];
+    }
+    if ([_deleteDelegate respondsToSelector:@selector(TextViewWillDelete:)]){
+        [_deleteDelegate TextViewWillDelete:self];
     }
 }
 
@@ -148,7 +151,7 @@
         }
     }
 
-    if ([textView.text length] && [[[UIDevice currentDevice] systemVersion] intValue] >= 8) {
+    if ([[[UIDevice currentDevice] systemVersion] intValue] >= 8) {
         [self deleteBackward];
     }
 
