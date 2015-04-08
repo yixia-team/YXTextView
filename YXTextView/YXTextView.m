@@ -113,6 +113,7 @@
 		CGFloat padding = self.textContainer.lineFragmentPadding;
 		rect.origin.x += padding;
 		rect.size.width -= padding * 2.0f;
+		rect.size.height += (self.font.pointSize - rect.size.height + 1);
 	} else {
 		if (self.contentInset.left == 0.0f) {
 			rect.origin.x += 8.0f;
