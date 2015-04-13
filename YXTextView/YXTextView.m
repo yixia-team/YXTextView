@@ -111,7 +111,8 @@
 	if ([self respondsToSelector:@selector(textContainer)]) {
 		rect = UIEdgeInsetsInsetRect(rect, self.textContainerInset);
 		CGFloat padding = self.textContainer.lineFragmentPadding;
-		rect.origin.x += padding;
+		rect.origin.x += padding + paddingLeft;
+        rect.origin.y += topOffset;
 		rect.size.width -= padding * 2.0f;
 		rect.size.height += (self.font.pointSize - rect.size.height + 1);
 	} else {

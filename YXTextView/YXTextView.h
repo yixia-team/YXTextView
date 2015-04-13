@@ -1,5 +1,8 @@
 #import <UIKit/UIKit.h>
 
+#define paddingLeft 5
+#define topOffset -2
+
 @protocol YXTextViewDelegate <NSObject>
 @optional
 - (void)TextViewWillDelete:(UITextView*)textView;
